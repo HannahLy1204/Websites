@@ -191,7 +191,7 @@ function update(time = 0) {
 }
 
 function updateScore() {
-    document.getElementById("score").innerHTML = "Score : " + player.score;
+    document.getElementById("score").innerText = "Score : " + player.score;
 }
 
 document.addEventListener("keydown", (event) => {
@@ -207,7 +207,7 @@ document.addEventListener("keydown", (event) => {
         case 87:
             playerRotate(1);
     }
-})
+});
 
 const colors = [
     null,
