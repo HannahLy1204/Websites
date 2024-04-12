@@ -20,9 +20,10 @@ setInterval(function () {
     var holeTop = parseInt(window.getComputedStyle(hole).getPropertyValue("top"));
     var cTop = -(500 - characterTop);
     if ((characterTop > 480) || ((blockLeft < 20) && (blockLeft > -50) && ((cTop < holeTop) || (cTop > holeTop + 130)))) {
-        alert("Game Over. Score: " + (counter - 1));
+        alert("Game Over");
         character.style.top = 100 + "px";
         counter = 0;
+        updateScore();
     }
 }, 10);
 
@@ -42,5 +43,20 @@ function jump() {
         }
         jumpCount++;
     }, 10);
+    updateScore();
+}
+
+document.addEventListener("keydown", (event) => {
+    if (event.keyCode === 32) {
+        jump();
+    }
+});
+
+function updateScore() {
+    if (counter === 0) {
+        document.getElementById("score").innerText = "Score : 0";
+    } else {
+        document.getElementById("score").innerText = "Score : " + ((counter - 1));
+    }
 }
 
